@@ -14,15 +14,16 @@ class ViewController: UIViewController, MKMapViewDelegate {
     //MARK: Properties
     @IBOutlet weak var map: MKMapView!
     
-    let lat = 48.852966
-    let lng = 2.349902
-    let radius = 1500.0
+    let viewModel = ViewModelProvider.provideMapViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        map.region = MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2DMake(lat, lng), radius, radius)
+        let coordinate = CLLocationCoordinate2DMake(viewModel.latLng.lat, viewModel.latLng.lng)
+        let radius = viewModel.radius
+        
+        map.region = MKCoordinateRegionMakeWithDistance(coordinate, radius, radius)
         map.isScrollEnabled = true
         map.isZoomEnabled = true
         map.isPitchEnabled = true
@@ -38,16 +39,19 @@ class ViewController: UIViewController, MKMapViewDelegate {
     }
     
     func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
-        PlacesRepository().loadSuggestions(withLatLng: PlacesRepository.LatLng(lat: lat, lng: lng)).observe { (places) in
-            DispatchQueue.main.async {
-                places?.forEach({ (place) in
-                    let annotation = MKPointAnnotation()
-                    annotation.coordinate = CLLocationCoordinate2DMake(place.latitude, place.longitude)
-                    annotation.title = place.name
-                    self.map.addAnnotation(annotation)
-                })
-                print("Places added")
-            }
+        viewModel.places.observe { (places) in
+            self.showMapAnnotations(places: places)
+        }
+    }
+    
+    private func showMapAnnotations(places: [Place]?) {
+        DispatchQueue.main.async {
+            places?.forEach({ (place) in
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = CLLocationCoordinate2DMake(place.latitude, place.longitude)
+                annotation.title = place.name
+                self.map.addAnnotation(annotation)
+            })
         }
     }
 

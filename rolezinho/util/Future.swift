@@ -20,6 +20,9 @@ class Future<Value>: NSObject {
     
     func observe(with callback: @escaping (Value?) -> Void) {
         callbacks.append(callback)
+        
+        //Dispatch the result on subscribe
+        callback(result)
     }
     
     func notifyCallbacks(value: Value?) {

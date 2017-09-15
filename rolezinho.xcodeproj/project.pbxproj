@@ -14,6 +14,8 @@
 		5BDAE9231F6B14E60068D6A8 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDAE9221F6B14E60068D6A8 /* Future.swift */; };
 		5BDAE9251F6B46BB0068D6A8 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDAE9241F6B46BB0068D6A8 /* Place.swift */; };
 		5BDAE9271F6B47F60068D6A8 /* URLSessionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDAE9261F6B47F60068D6A8 /* URLSessionRequest.swift */; };
+		5BDAE92A1F6C10B50068D6A8 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDAE9291F6C10B50068D6A8 /* MapViewModel.swift */; };
+		5BDAE92D1F6C14010068D6A8 /* ViewModelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDAE92C1F6C14010068D6A8 /* ViewModelProvider.swift */; };
 		5BF86BB51F6AAE61004E6A42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF86BB41F6AAE61004E6A42 /* AppDelegate.swift */; };
 		5BF86BB71F6AAE61004E6A42 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF86BB61F6AAE61004E6A42 /* ViewController.swift */; };
 		5BF86BBA1F6AAE61004E6A42 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BF86BB81F6AAE61004E6A42 /* Main.storyboard */; };
@@ -51,6 +53,8 @@
 		5BDAE9221F6B14E60068D6A8 /* Future.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
 		5BDAE9241F6B46BB0068D6A8 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		5BDAE9261F6B47F60068D6A8 /* URLSessionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionRequest.swift; sourceTree = "<group>"; };
+		5BDAE9291F6C10B50068D6A8 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		5BDAE92C1F6C14010068D6A8 /* ViewModelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProvider.swift; sourceTree = "<group>"; };
 		5BF86BB11F6AAE61004E6A42 /* rolezinho.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rolezinho.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BF86BB41F6AAE61004E6A42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BF86BB61F6AAE61004E6A42 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +113,56 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5BDAE9281F6C10820068D6A8 /* map */ = {
+			isa = PBXGroup;
+			children = (
+				5BF86BB61F6AAE61004E6A42 /* ViewController.swift */,
+				5BF86BB81F6AAE61004E6A42 /* Main.storyboard */,
+				5BDAE9291F6C10B50068D6A8 /* MapViewModel.swift */,
+			);
+			path = map;
+			sourceTree = "<group>";
+		};
+		5BDAE92B1F6C13DF0068D6A8 /* di */ = {
+			isa = PBXGroup;
+			children = (
+				5BDAE92C1F6C14010068D6A8 /* ViewModelProvider.swift */,
+			);
+			path = di;
+			sourceTree = "<group>";
+		};
+		5BDAE92E1F6C16290068D6A8 /* repository */ = {
+			isa = PBXGroup;
+			children = (
+				5BDAE9201F6B048A0068D6A8 /* PlacesRepository.swift */,
+			);
+			path = repository;
+			sourceTree = "<group>";
+		};
+		5BDAE92F1F6C16370068D6A8 /* network */ = {
+			isa = PBXGroup;
+			children = (
+				5BDAE9261F6B47F60068D6A8 /* URLSessionRequest.swift */,
+			);
+			path = network;
+			sourceTree = "<group>";
+		};
+		5BDAE9301F6C16420068D6A8 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				5BDAE9241F6B46BB0068D6A8 /* Place.swift */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		5BDAE9311F6C164F0068D6A8 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				5BDAE9221F6B14E60068D6A8 /* Future.swift */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
 		5BF86BA81F6AAE61004E6A42 = {
 			isa = PBXGroup;
 			children = (
@@ -134,17 +188,17 @@
 		5BF86BB31F6AAE61004E6A42 /* rolezinho */ = {
 			isa = PBXGroup;
 			children = (
+				5BDAE9311F6C164F0068D6A8 /* util */,
+				5BDAE9301F6C16420068D6A8 /* data */,
+				5BDAE92F1F6C16370068D6A8 /* network */,
+				5BDAE92E1F6C16290068D6A8 /* repository */,
+				5BDAE92B1F6C13DF0068D6A8 /* di */,
+				5BDAE9281F6C10820068D6A8 /* map */,
 				5B7BF6771F6AAF770021FB1F /* GoogleService-Info.plist */,
 				5BF86BB41F6AAE61004E6A42 /* AppDelegate.swift */,
-				5BF86BB61F6AAE61004E6A42 /* ViewController.swift */,
-				5BF86BB81F6AAE61004E6A42 /* Main.storyboard */,
 				5BF86BBB1F6AAE61004E6A42 /* Assets.xcassets */,
 				5BF86BBD1F6AAE61004E6A42 /* LaunchScreen.storyboard */,
 				5BF86BC01F6AAE61004E6A42 /* Info.plist */,
-				5BDAE9201F6B048A0068D6A8 /* PlacesRepository.swift */,
-				5BDAE9221F6B14E60068D6A8 /* Future.swift */,
-				5BDAE9241F6B46BB0068D6A8 /* Place.swift */,
-				5BDAE9261F6B47F60068D6A8 /* URLSessionRequest.swift */,
 			);
 			path = rolezinho;
 			sourceTree = "<group>";
@@ -479,9 +533,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BF86BB71F6AAE61004E6A42 /* ViewController.swift in Sources */,
+				5BDAE92D1F6C14010068D6A8 /* ViewModelProvider.swift in Sources */,
 				5BDAE9211F6B048A0068D6A8 /* PlacesRepository.swift in Sources */,
 				5BDAE9231F6B14E60068D6A8 /* Future.swift in Sources */,
 				5BF86BB51F6AAE61004E6A42 /* AppDelegate.swift in Sources */,
+				5BDAE92A1F6C10B50068D6A8 /* MapViewModel.swift in Sources */,
 				5BDAE9271F6B47F60068D6A8 /* URLSessionRequest.swift in Sources */,
 				5BDAE9251F6B46BB0068D6A8 /* Place.swift in Sources */,
 			);

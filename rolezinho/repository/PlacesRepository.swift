@@ -10,22 +10,16 @@ import Foundation
 
 class PlacesRepository: NSObject {
     
-    func loadSuggestions(withLatLng: LatLng) -> Future<[Place]> {
+    func loadSuggestions(withLatLng: LatLng, withRadius: Double = 1500) -> Future<[Place]> {
         
-        let url = "http://api.combah.com/places/suggestions?lat=\(withLatLng.lat)&lon=\(withLatLng.lng)&radius=15000&use_distance=0"
+        let url = "http://api.combah.com/places/suggestions?lat=\(withLatLng.lat)&lon=\(withLatLng.lng)&radius=\(withRadius)&use_distance=0"
         
         let future = Future<[Place]>()
         URLSession.shared.request(url: url).observe { (data) in
             if let validData = data {
                 if let json = try? JSONSerialization.jsonObject(with: validData, options: JSONSerialization.ReadingOptions()) {
-                    if let dictionary = json as? [String : NSArray] {
-                        future.result = dictionary["places"]?.map { place in
-                            if let placeDict = place as? [String: Any] {
-                                return Place(withDict: placeDict)
-                            } else {
-                                return Place()
-                            }
-                        }
+                    if let dictionary = json as? [String : [[String : Any]]] {
+                        future.result = dictionary["places"]?.flatMap{ Place(withDict: $0) }
                     }
                 }
             }

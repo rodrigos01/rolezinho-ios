@@ -15,11 +15,7 @@ class Place: NSObject {
     var longitude: Double = 0.0
     var coverImage: String? = nil
     
-    override init() {
-        
-    }
-    
-    init(withDict: [String : Any]) {
+    init?(withDict: [String : Any]) {
         self.id = withDict["id"] as? String ?? ""
         self.name = withDict["name"] as? String ?? ""
         self.latitude = withDict["latitude"] as? Double ?? 0.0
