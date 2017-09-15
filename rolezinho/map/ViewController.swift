@@ -44,12 +44,20 @@ class ViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        viewModel.setCoordinates(lat: mapView.region.center.latitude, lng: mapView.region.center.longitude)
+    }
+    
     private func showMapAnnotations(places: [Place]?) {
         DispatchQueue.main.async {
-            places?.forEach({ (place) in
+            places?.map({ (place) -> MKPointAnnotation in
                 let annotation = MKPointAnnotation()
                 annotation.coordinate = CLLocationCoordinate2DMake(place.latitude, place.longitude)
                 annotation.title = place.name
+                return annotation
+            }).filter({ (annotation) -> Bool in
+                !self.map.annotations.contains(where: { $0 as? MKPointAnnotation == annotation })
+            }).forEach({ (annotation) in
                 self.map.addAnnotation(annotation)
             })
         }
